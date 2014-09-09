@@ -13,28 +13,33 @@ GLApp001::GLApp001()
 
 void GLApp001::InitScene()
 {
-	GLShader vs = GLShader("basic.vs", GL_VERTEX_SHADER);
-	GLShader ps = GLShader("basic.ps", GL_FRAGMENT_SHADER);
-	GLProgram prog = GLProgram(std::vector<GLShader>({ vs, ps }));
+	vs		= std::make_shared<GLShader>("basic.vs", GL_VERTEX_SHADER);
+	ps		= std::make_shared<GLShader>("basic.ps", GL_FRAGMENT_SHADER);
+	prog	= std::make_shared<GLProgram>(std::vector<GLShader>({ *vs, *ps }));
+	vbuffer = std::make_shared<GLVertexBuffer>(4);
 
-	GLVertexBuffer vb(3);
+	time = 0.0f;
 
 	float positionData[] = {
-		-0.8f, -0.8f, 0.0f,
-		0.8f, 0.0f, 0.0f,
-		0.0f, 0.8f, 0.0f };
+		1.0f, 0.0f, 0.0f,
+		0.0f, 1.0f, 0.0f,		
+		0.0f,-1.0f, 0.0f,
+		-1.0f,0.0f, 0.0f
+	};
 
 	float colorData[] = {
 		1.0f, 0.0f, 0.0f,
 		0.0f, 1.0f, 0.0f,
-		0.0f, 0.0f, 1.0f };
+		0.0f, 0.0f, 1.0f,
+		1.0f, 1.0f, 0.0f		
+	};
 
-	vb.AddElement(positionData, 3);
-	vb.AddElement(colorData, 3);
-	vb.GenBuffers();
+	vbuffer->AddElement(positionData, 3);
+	vbuffer->AddElement(colorData, 3);
+	vbuffer->GenBuffers();
 
-	glUseProgram(prog.GetHandle());
-	glBindVertexArray(vb.GetHandle());
+	glUseProgram(prog->GetHandle());
+	glBindVertexArray(vbuffer->GetHandle());
 }
 
 bool GLApp001::Running() const
@@ -44,9 +49,12 @@ bool GLApp001::Running() const
 
 void GLApp001::RenderScene()
 {
+	prog->SetUniform("rotation", time);
+	time += 0.0001f;
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glDrawArrays(GL_TRIANGLES, 0, 3);
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 	glutSwapBuffers();
+	glutPostRedisplay();
 }
 
 void GLApp001::HandleInput(unsigned char key, int x, int y)

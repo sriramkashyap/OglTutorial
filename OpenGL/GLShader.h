@@ -23,11 +23,15 @@ protected:
 	GLuint program_handle;
 	std::vector<GLShader> shader_list;
 
-	GLuint GLProgram::Compile(const std::vector<GLShader> &shaders);
+	GLuint Compile(const std::vector<GLShader> &shaders);
+	GLint GetUniformLocation(const std::string &name) const;
 public:
 
 	GLProgram(std::vector<GLShader> &shaders);
 	GLuint GetHandle() const;
+	
+	void  SetUniform(const std::string &name, float value) const;
+	void  SetUniform(const std::string &name, int value) const;
 };
 
 #endif

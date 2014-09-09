@@ -39,7 +39,7 @@ void GLMain::InitializeGLUT()
 
 	// init GLUT and create Window
 	glutInit(&argc, &dummyArgs);
-	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
+	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA | GLUT_MULTISAMPLE);
 	glutInitWindowPosition(100, 100);
 	glutInitWindowSize(320, 320);
 	glutCreateWindow("OpenGL Test");
@@ -52,6 +52,8 @@ void GLMain::InitializeGLUT()
 	// register callbacks
 	glutDisplayFunc(RenderCallback);
 	glutKeyboardFunc(InputCallback);
+
+	glEnable(GL_MULTISAMPLE);
 }
 
 bool GLMain::Initialized()

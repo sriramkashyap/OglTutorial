@@ -58,6 +58,21 @@ GLuint GLProgram::GetHandle() const
 	return program_handle;
 }
 
+GLint GLProgram::GetUniformLocation(const std::string &name) const
+{
+	return glGetUniformLocation(program_handle, name.c_str());
+}
+
+void  GLProgram::SetUniform(const std::string &name, float value) const
+{
+	glUniform1f(GetUniformLocation(name), value);
+}
+
+void  GLProgram::SetUniform(const std::string &name, int value) const
+{
+	glUniform1i(GetUniformLocation(name), value);
+}
+
 GLuint GLProgram::Compile(const std::vector<GLShader> &shaders)
 {
 	GLuint programHandle = glCreateProgram();
