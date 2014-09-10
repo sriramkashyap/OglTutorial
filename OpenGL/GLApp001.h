@@ -21,7 +21,7 @@ public:
 
 	GLApp001();
 	void InitScene();
-	void RenderScene();
+	void RenderScene(double elapsedMilliseconds);
 	bool Running() const;
 	void HandleInput(unsigned char key, int x, int y);
 };

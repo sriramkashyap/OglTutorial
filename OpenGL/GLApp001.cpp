@@ -47,10 +47,10 @@ bool GLApp001::Running() const
 	return running;
 }
 
-void GLApp001::RenderScene()
+void GLApp001::RenderScene(double elapsedMilliseconds)
 {
 	prog->SetUniform("rotation", time);
-	time += 0.0001f;
+	time += 0.001f * (float)elapsedMilliseconds;
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 	glutSwapBuffers();

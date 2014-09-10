@@ -5,13 +5,14 @@
 #include "GLMain.h"
 
 //Initialize static members
-bool GLMain::initialized_glut= false;
+double GLMain::elapsedMilliseconds		= 0.0;
+bool GLMain::initialized_glut			= false;
 GLApplication * GLMain::current_context = NULL;
 
 void GLMain::RenderCallback()
 {
 	MsgAssert(current_context != NULL, "Please bind a GLMain object first");
-	current_context->RenderScene();
+	current_context->RenderScene(elapsedMilliseconds);
 }
 
 void GLMain::InputCallback(unsigned char key, int x, int y)
@@ -23,9 +24,24 @@ void GLMain::InputCallback(unsigned char key, int x, int y)
 void GLMain::Run(GLApplication &p)
 {
 	current_context = &p;
+
+	int loop_count = 0;
+	PerformanceCounter fps_counter,frame_counter;
+
 	while (current_context->Running())
-	{
+	{	
+		elapsedMilliseconds = frame_counter.GetTimeMilliSeconds();
+		frame_counter.Start();
+
 		glutMainLoopEvent();
+
+		loop_count++;
+		if (loop_count == 1024) 
+		{
+			std::cout << "FPS = " << loop_count / fps_counter.GetTimeSeconds() << std::endl;
+			fps_counter.Start();
+			loop_count = 0;
+		}
 	}
 }
 
@@ -70,3 +86,4 @@ GLApplication::GLApplication()
 {
 	MsgAssert(GLMain::Initialized(), "Call GLMain::InitializeGLUT() before creating GLApplications");
 }
+
