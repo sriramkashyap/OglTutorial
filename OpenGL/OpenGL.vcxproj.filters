@@ -33,10 +33,19 @@
     <ClCompile Include="GLMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GLApp001.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GLApp002.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="GLTransforms.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GLApp001.cpp">
+    <ClCompile Include="GLGeometry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GLApp003.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -67,8 +76,19 @@
     <ClInclude Include="GLTransforms.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GLApp001.h">
+    <ClInclude Include="GLApps.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GLGeometry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="transform.vs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="wave.vs">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

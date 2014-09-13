@@ -3,6 +3,8 @@
 
 #include <string>
 #include <vector>
+#include <glm/glm.hpp>
+
 #include "GLIncludes.h"
 
 class GLShader
@@ -30,8 +32,9 @@ public:
 	GLProgram(std::vector<GLShader> &shaders);
 	GLuint GetHandle() const;
 	
-	void  SetUniform(const std::string &name, float value) const;
-	void  SetUniform(const std::string &name, int value) const;
+	void SetUniform(const std::string &name, float value) const;
+	void SetUniform(const std::string &name, int value) const;
+	void SetUniform(const std::string &name, glm::mat4 &value) const;
 };
 
 #endif

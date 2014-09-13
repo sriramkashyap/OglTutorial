@@ -70,6 +70,20 @@ void GLMain::InitializeGLUT()
 	glutKeyboardFunc(InputCallback);
 
 	glEnable(GL_MULTISAMPLE);
+	glDepthFunc(GL_LEQUAL);
+	glDepthMask(GL_TRUE);
+}
+
+void GLMain::EnableDepthTest(bool value)
+{
+	if (value)
+	{
+		glEnable(GL_DEPTH_TEST);
+	}
+	else
+	{
+		glDisable(GL_DEPTH_TEST);
+	}
 }
 
 bool GLMain::Initialized()
@@ -86,4 +100,5 @@ GLApplication::GLApplication()
 {
 	MsgAssert(GLMain::Initialized(), "Call GLMain::InitializeGLUT() before creating GLApplications");
 }
+
 

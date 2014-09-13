@@ -68,7 +68,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\opengl\eigen\;C:\opengl\glew\include;C:\opengl\eigen\unsupported\;C:\opengl\freeglut\include</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\opengl\eigen\;C:\opengl\glew\include;C:\opengl\freeglut\include;C:\opengl\glm</IncludePath>
     <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);C:\opengl\glew\lib\Release\Win32;C:\opengl\freeglut\lib</LibraryPath>
     <ExecutablePath>$(VC_ExecutablePath_x86);$(WindowsSDK_ExecutablePath);$(VS_ExecutablePath);$(MSBuild_ExecutablePath);$(SystemRoot)\SysWow64;$(FxCopDir);$(PATH);</ExecutablePath>
   </PropertyGroup>
@@ -80,7 +80,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\opengl\eigen\;C:\opengl\glew\include;C:\opengl\eigen\unsupported\;C:\opengl\freeglut\include</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\opengl\eigen\;C:\opengl\glew\include;C:\opengl\freeglut\include;C:\opengl\glm</IncludePath>
     <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);C:\opengl\glew\lib\Release\Win32;C:\opengl\freeglut\lib</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -151,6 +151,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="GLApp001.cpp" />
+    <ClCompile Include="GLApp002.cpp" />
+    <ClCompile Include="GLApp003.cpp" />
+    <ClCompile Include="GLGeometry.cpp" />
     <ClCompile Include="GLMain.cpp" />
     <ClCompile Include="GLShader.cpp" />
     <ClCompile Include="GLTransforms.cpp" />
@@ -167,13 +170,18 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GLGeometry.h" />
     <ClInclude Include="GLIncludes.h" />
     <ClInclude Include="GLMain.h" />
     <ClInclude Include="GLShader.h" />
     <ClInclude Include="GLTransforms.h" />
     <ClInclude Include="GLUtils.h" />
     <ClInclude Include="GLVertexBuffer.h" />
-    <ClInclude Include="GLApp001.h" />
+    <ClInclude Include="GLApps.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="transform.vs" />
+    <None Include="wave.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

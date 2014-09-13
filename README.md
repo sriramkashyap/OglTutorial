@@ -22,13 +22,15 @@ Getting Started:
 	C:\opengl\glew\include
 	C:\opengl\glew\lib
 
-> Download Eigen headers and unzip to "C:\opengl\eigen"
-  Link : http://eigen.tuxfamily.org/index.php?title=Main_Page
+> Download GLM headers and unzip to "C:\opengl\glm"
+  Link : http://sourceforge.net/projects/ogl-math/files/
 
-  You should now have the following directories:
-	C:\opengl\eigen\bench
-	C:\opengl\eigen\Eigen
-	C:\opengl\eigen\test
-	C:\opengl\eigen\unsupported
+  You should now have the following directories:	
+	C:\opengl\glm\glm\gtc
+	C:\opengl\glm\glm\gtx
+	C:\opengl\glm\glm\detail
 
-Now, open 'OpenGL.sln' in VS 2013, build and run the application. You should see a spinning square.
+Now, open 'OpenGL.sln' in VS 2013, build and run the application. 
+You should see the first sample application(a triangle). 
+Press escape to launch the next sample, and the next...
+

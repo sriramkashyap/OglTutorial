@@ -25,6 +25,8 @@ public:
 	static void Run(GLApplication &p);
 	static void InitializeGLUT();
 	static bool Initialized();
+
+	static void EnableDepthTest(bool value);
 };
 
 #endif
