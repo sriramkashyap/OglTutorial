@@ -1,4 +1,5 @@
 #include "GLTransforms.h"
+#include "GLIncludes.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/transform2.hpp>
@@ -27,7 +28,7 @@ GLCamera::GLCamera() :
 	up(0.0f, 1.0f, 0.0f)
 {
 	fov = 75.0f;
-	aspect_ratio = 16.0f / 9.0f;
+	aspect_ratio = static_cast<float>(glutGet(GLUT_WINDOW_WIDTH)) / glutGet(GLUT_WINDOW_HEIGHT);
 	near_z = 0.001f;
 	far_z = 1000.0f;
 

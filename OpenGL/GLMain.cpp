@@ -21,6 +21,12 @@ void GLMain::InputCallback(unsigned char key, int x, int y)
 	current_context->HandleInput(key,x,y);
 }
 
+void GLMain::ResizeCallback(int width, int height)
+{
+	MsgAssert(current_context != NULL, "Please bind a GLMain object first");
+	current_context->ResizeFunction(width,height);
+}
+
 void GLMain::Run(GLApplication &p)
 {
 	current_context = &p;
@@ -68,6 +74,7 @@ void GLMain::InitializeGLUT()
 	// register callbacks
 	glutDisplayFunc(RenderCallback);
 	glutKeyboardFunc(InputCallback);
+	glutReshapeFunc(ResizeCallback);
 
 	glEnable(GL_MULTISAMPLE);
 	glDepthFunc(GL_LEQUAL);

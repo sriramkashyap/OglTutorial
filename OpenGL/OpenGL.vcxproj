@@ -155,6 +155,8 @@
     <ClCompile Include="GLApp003.cpp" />
     <ClCompile Include="GLApp004.cpp" />
     <ClCompile Include="GLApp005.cpp" />
+    <ClCompile Include="GLApp006.cpp" />
+    <ClCompile Include="GLApps.cpp" />
     <ClCompile Include="GLGeometry.cpp" />
     <ClCompile Include="GLMain.cpp" />
     <ClCompile Include="GLShader.cpp" />
@@ -185,6 +187,8 @@
     <ClInclude Include="GLApps.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="lighting.ps" />
+    <None Include="lighting.vs" />
     <None Include="texture.ps" />
     <None Include="transform.vs" />
     <None Include="wave.vs" />

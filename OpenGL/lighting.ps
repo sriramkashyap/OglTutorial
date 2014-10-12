@@ -1,0 +1,17 @@
+#version 400
+in vec3 worldpos;
+in vec3 worldnormal;
+in vec3 color;
+in vec2 texcoord;
+
+layout(location = 0) out vec4 FragColor;
+
+uniform sampler2D tex;
+
+void main()
+{
+	vec4 texval		= texture(tex, texcoord);
+	vec4 finalcolor = texval * 0.5f + vec4(color,1.0f) * 0.5f;
+	
+	FragColor		= finalcolor;
+}

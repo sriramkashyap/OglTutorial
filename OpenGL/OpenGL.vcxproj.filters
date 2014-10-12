@@ -57,6 +57,12 @@
     <ClCompile Include="GLApp005.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GLApp006.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GLApps.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="basic.vs">
@@ -106,6 +112,12 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="texture.ps">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="lighting.vs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="lighting.ps">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

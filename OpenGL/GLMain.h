@@ -7,6 +7,7 @@ public:
 	GLApplication();
 	virtual void RenderScene(double elapsedMilliseconds) = 0;
 	virtual void HandleInput(unsigned char key, int x, int y) = 0;
+	virtual void ResizeFunction(int width, int height) = 0;
 	virtual bool Running() const = 0;
 };
 
@@ -20,6 +21,7 @@ protected:
 	static void CheckDeviceCaps();
 	static void RenderCallback();
 	static void InputCallback(unsigned char key, int x, int y);
+	static void ResizeCallback(int width, int height);
 
 public:
 	static void Run(GLApplication &p);

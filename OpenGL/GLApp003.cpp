@@ -22,15 +22,13 @@ void GLApp003::InitScene()
 	prog = std::make_shared<GLProgram>(std::vector<GLShader>({ *vs, *ps }));
 	camera = std::make_shared<GLCamera>();
 
-	auto mesh = GLGeometry::GenMesh(64);
-	num_vertices = mesh.size() / 3;
-
-	auto color = GLGeometry::GenColor(num_vertices);
+	auto mesh = GLGeometry::Gen2DMesh(64);
+	num_vertices = mesh.numVertices();
 
 	vbuffer = std::make_shared<GLVertexBuffer>(num_vertices);
 
-	vbuffer->AddElement(&mesh[0], 3);
-	vbuffer->AddElement(&color[0], 3);
+	vbuffer->AddElement(&mesh.position[0], 3);
+	vbuffer->AddElement(&mesh.color[0], 3);
 	vbuffer->GenBuffers();
 
 	glUseProgram(prog->GetHandle());
@@ -39,16 +37,17 @@ void GLApp003::InitScene()
 	camera->SetupView(glm::vec3(0.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 	camera->PlaceAt(glm::vec3(glm::sin(time)*4.0f, glm::cos(time)*4.0f, 1.0f));
 	prog->SetUniform("transform", camera->GetTransform());
-
+	GLMain::EnableDepthTest(true);
 }
 
 void GLApp003::RenderScene(double elapsedMilliseconds)
 {
-	camera->PlaceAt(glm::vec3(glm::sin(time)*4.0f, glm::cos(time)*4.0f, 1.0f));
 	if (rotating)
 	{
-		prog->SetUniform("transform", camera->GetTransform());
+		camera->PlaceAt(glm::vec3(glm::sin(time)*4.0f, glm::cos(time)*4.0f, 1.0f));
 	}
+	prog->SetUniform("transform", camera->GetTransform());
+	
 	if (animating)
 	{
 		prog->SetUniform("phase", time);
@@ -88,4 +87,10 @@ void GLApp003::HandleInput(unsigned char key, int x, int y)
 		GLMain::EnableDepthTest(false);
 		break;
 	}
+}
+
+void GLApp003::ResizeFunction(int width, int height)
+{
+	glViewport(0, 0, width, height);
+	camera->SetupProjection(75.0f, static_cast<float>(width) / height, 0.001f, 1000.0f);
 }

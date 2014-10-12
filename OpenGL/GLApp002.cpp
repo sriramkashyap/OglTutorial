@@ -54,3 +54,9 @@ void GLApp002::RenderScene(double elapsedMilliseconds)
 	glutSwapBuffers();
 	glutPostRedisplay();
 }
+
+void GLApp002::ResizeFunction(int width, int height)
+{
+	glViewport(0, 0, width, height);
+	camera->SetupProjection(75.0f, static_cast<float>(width) / height, 0.001f, 1000.0f);
+}

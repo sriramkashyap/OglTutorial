@@ -48,6 +48,8 @@ void GLApp005::InitScene()
 	//texture->GenerateTexture(16,16,GL_TEXGEN_CHECKER);
 	texture->GetTextureFromFile("wood.jpg", GL_BGR);
 	texture->LoadTextureToGPU();
+
+	GLMain::EnableDepthTest(false);
 }
 
 void GLApp005::RenderScene(double elapsedMilliseconds)
@@ -56,8 +58,14 @@ void GLApp005::RenderScene(double elapsedMilliseconds)
 	prog->SetUniform("transform", camera->GetTransform());
 	texture->Use(prog->GetUniformLocation("tex"));
 	time += 0.001f * (float)elapsedMilliseconds;
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 	glutSwapBuffers();
 	glutPostRedisplay();
+}
+
+void GLApp005::ResizeFunction(int width, int height)
+{
+	glViewport(0, 0, width, height);
+	camera->SetupProjection(75.0f, static_cast<float>(width) / height, 0.001f, 1000.0f);
 }
