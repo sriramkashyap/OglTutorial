@@ -7,6 +7,7 @@
 class GLShader;
 class GLProgram;
 class GLVertexBuffer;
+class GLTexture;
 class GLCamera;
 
 class SimpleGLApp : public GLApplication
@@ -70,4 +71,16 @@ public:
 	void RenderScene(double elapsedMilliseconds);
 	void HandleInput(unsigned char key, int x, int y);
 };
+
+class GLApp004 : public SimpleGLApp
+{
+protected:
+	std::shared_ptr<GLCamera> camera;
+	std::shared_ptr<GLTexture> texture;
+public:
+	GLApp004();
+	void InitScene();
+	void RenderScene(double elapsedMilliseconds);
+};
+
 #endif

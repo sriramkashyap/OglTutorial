@@ -48,12 +48,21 @@
     <ClCompile Include="GLApp003.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GLTexture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GLApp004.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="basic.vs">
       <Filter>Shaders</Filter>
     </Text>
     <Text Include="basic.ps">
+      <Filter>Shaders</Filter>
+    </Text>
+    <Text Include="texture.vs">
       <Filter>Shaders</Filter>
     </Text>
   </ItemGroup>
@@ -82,12 +91,18 @@
     <ClInclude Include="GLGeometry.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GLTexture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="transform.vs">
       <Filter>Shaders</Filter>
     </None>
     <None Include="wave.vs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="texture.ps">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

@@ -153,9 +153,11 @@
     <ClCompile Include="GLApp001.cpp" />
     <ClCompile Include="GLApp002.cpp" />
     <ClCompile Include="GLApp003.cpp" />
+    <ClCompile Include="GLApp004.cpp" />
     <ClCompile Include="GLGeometry.cpp" />
     <ClCompile Include="GLMain.cpp" />
     <ClCompile Include="GLShader.cpp" />
+    <ClCompile Include="GLTexture.cpp" />
     <ClCompile Include="GLTransforms.cpp" />
     <ClCompile Include="GLUtils.cpp" />
     <ClCompile Include="GLVertexBuffer.cpp" />
@@ -168,18 +170,21 @@
     <Text Include="basic.vs">
       <FileType>Document</FileType>
     </Text>
+    <Text Include="texture.vs" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GLGeometry.h" />
     <ClInclude Include="GLIncludes.h" />
     <ClInclude Include="GLMain.h" />
     <ClInclude Include="GLShader.h" />
+    <ClInclude Include="GLTexture.h" />
     <ClInclude Include="GLTransforms.h" />
     <ClInclude Include="GLUtils.h" />
     <ClInclude Include="GLVertexBuffer.h" />
     <ClInclude Include="GLApps.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="texture.ps" />
     <None Include="transform.vs" />
     <None Include="wave.vs" />
   </ItemGroup>

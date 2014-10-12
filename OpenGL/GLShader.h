@@ -25,8 +25,7 @@ protected:
 	GLuint program_handle;
 	std::vector<GLShader> shader_list;
 
-	GLuint Compile(const std::vector<GLShader> &shaders);
-	GLint GetUniformLocation(const std::string &name) const;
+	GLuint Compile(const std::vector<GLShader> &shaders);	
 public:
 
 	GLProgram(std::vector<GLShader> &shaders);
@@ -35,6 +34,7 @@ public:
 	void SetUniform(const std::string &name, float value) const;
 	void SetUniform(const std::string &name, int value) const;
 	void SetUniform(const std::string &name, glm::mat4 &value) const;
+	GLint GetUniformLocation(const std::string &name) const;
 };
 
 #endif
