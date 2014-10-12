@@ -56,7 +56,7 @@ void GLApp005::RenderScene(double elapsedMilliseconds)
 	prog->SetUniform("transform", camera->GetTransform());
 	texture->Use(prog->GetUniformLocation("tex"));
 	time += 0.001f * (float)elapsedMilliseconds;
-	glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 	glutSwapBuffers();
 	glutPostRedisplay();
