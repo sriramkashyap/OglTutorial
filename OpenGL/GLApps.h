@@ -83,4 +83,15 @@ public:
 	void RenderScene(double elapsedMilliseconds);
 };
 
+class GLApp005 : public SimpleGLApp
+{
+protected:
+	std::shared_ptr<GLCamera> camera;
+	std::shared_ptr<GLTexture> texture;
+public:
+	GLApp005();
+	void InitScene();
+	void RenderScene(double elapsedMilliseconds);
+};
+
 #endif

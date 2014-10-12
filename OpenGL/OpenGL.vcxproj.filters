@@ -54,6 +54,9 @@
     <ClCompile Include="GLApp004.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GLApp005.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="basic.vs">

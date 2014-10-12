@@ -10,6 +10,7 @@ int main(int argc, char **argv)
 	GLMain::Run(GLApp002());
 	GLMain::Run(GLApp003());
 	GLMain::Run(GLApp004());
+	GLMain::Run(GLApp005());
 
 	std::cout << "OpenGL Test Completed" << std::endl;
 	return 0;
