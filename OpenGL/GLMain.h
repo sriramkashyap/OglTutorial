@@ -29,6 +29,7 @@ public:
 	static bool Initialized();
 
 	static void EnableDepthTest(bool value);
+	static void EnableBlend(bool value);
 };
 
 #endif

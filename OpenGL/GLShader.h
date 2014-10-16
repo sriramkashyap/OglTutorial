@@ -34,6 +34,9 @@ public:
 	void SetUniform(const std::string &name, float value) const;
 	void SetUniform(const std::string &name, int value) const;
 	void SetUniform(const std::string &name, glm::mat4 &value) const;
+	void SetUniform(const std::string &name, glm::vec4 &value) const;
+	void SetUniform(const std::string &name, glm::vec3 &value) const;
+	void SetUniform(const std::string &name, glm::vec2 &value) const;
 	GLint GetUniformLocation(const std::string &name) const;
 };
 

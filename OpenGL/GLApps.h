@@ -3,6 +3,8 @@
 
 #include <memory>
 #include "GLMain.h"
+#include <glm/glm.hpp>
+#include "GLGeometry.h"
 
 class GLShader;
 class GLProgram;
@@ -87,13 +89,42 @@ public:
 class GLApp006 : public SimpleGLApp
 {
 protected:
-	std::shared_ptr<GLTexture> texture;
+	int numVertices;
 	std::shared_ptr<GLCamera> camera;
-	int num_vertices;
+	std::shared_ptr<GLTexture> texture;
+
+	std::shared_ptr<GLShader> vs2;
+	std::shared_ptr<GLShader> ps2;
+	std::shared_ptr<GLProgram> prog2;
+	std::shared_ptr<GLVertexBuffer> vbuffer2;
+
+	bool enable_blend;
+
 public:
 	GLApp006();
 	void InitScene();
 	void RenderScene(double elapsedMilliseconds);
+	void HandleInput(unsigned char key, int x, int y);
+	void ResizeFunction(int width, int height);
+};
+
+class GLApp007 : public SimpleGLApp
+{
+protected:
+	std::shared_ptr<GLCamera> camera;
+	std::shared_ptr<GLTexture> texture;
+
+	GLGeometry::GLModel sphere;
+
+	glm::vec3 light_pos;
+	glm::vec4 light_col, mat_ambient;
+	float mat_diffuse, mat_specular;
+
+public:
+	GLApp007();
+	void InitScene();
+	void RenderScene(double elapsedMilliseconds);
+	void HandleInput(unsigned char key, int x, int y);
 	void ResizeFunction(int width, int height);
 };
 

@@ -77,6 +77,7 @@ void GLMain::InitializeGLUT()
 	glutReshapeFunc(ResizeCallback);
 
 	glEnable(GL_MULTISAMPLE);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); //default blend
 	glDepthFunc(GL_LEQUAL);
 	glDepthMask(GL_TRUE);
 }
@@ -90,6 +91,18 @@ void GLMain::EnableDepthTest(bool value)
 	else
 	{
 		glDisable(GL_DEPTH_TEST);
+	}
+}
+
+void GLMain::EnableBlend(bool value)
+{
+	if (value)
+	{
+		glEnable(GL_BLEND);
+	}
+	else
+	{
+		glDisable(GL_BLEND);
 	}
 }
 

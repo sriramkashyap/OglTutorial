@@ -20,6 +20,7 @@ namespace GLGeometry
 
 	GLModel Gen2DMesh(int subdiv);
 	GLModel GenSphere(int segments, int slices);
+	GLModel GenCylinder(int segments, int slices);
 }
 
 #endif

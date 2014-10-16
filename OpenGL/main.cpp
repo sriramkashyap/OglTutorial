@@ -11,7 +11,8 @@ int main(int argc, char **argv)
 	GLMain::Run(GLApp003());	//Wavy Mesh (Vertex Animation)
 	GLMain::Run(GLApp004());	//Random texture (Textures)
 	GLMain::Run(GLApp005());	//Wood texture (FreeImage)
-	GLMain::Run(GLApp006());	//Lighting demo with sphere
+	GLMain::Run(GLApp006());	//Blending and drawing multiple objects
+	GLMain::Run(GLApp007());	//Cueball lighting demo
 
 	std::cout << "OpenGL Test Completed" << std::endl;
 	return 0;

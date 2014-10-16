@@ -156,6 +156,7 @@
     <ClCompile Include="GLApp004.cpp" />
     <ClCompile Include="GLApp005.cpp" />
     <ClCompile Include="GLApp006.cpp" />
+    <ClCompile Include="GLApp007.cpp" />
     <ClCompile Include="GLApps.cpp" />
     <ClCompile Include="GLGeometry.cpp" />
     <ClCompile Include="GLMain.cpp" />
@@ -191,6 +192,7 @@
     <None Include="lighting.vs" />
     <None Include="texture.ps" />
     <None Include="transform.vs" />
+    <None Include="wave.ps" />
     <None Include="wave.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

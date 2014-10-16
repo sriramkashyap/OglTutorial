@@ -8,6 +8,8 @@
 #include "GLApps.h"
 #include "GLGeometry.h"
 
+using namespace GLGeometry;
+
 GLApp006::GLApp006()
 {
 	InitScene();
@@ -15,44 +17,117 @@ GLApp006::GLApp006()
 
 void GLApp006::InitScene()
 {
-	vs = std::make_shared<GLShader>("lighting.vs", GL_VERTEX_SHADER);
-	ps = std::make_shared<GLShader>("lighting.ps", GL_FRAGMENT_SHADER);
+	//Load texture shaders
+	vs = std::make_shared<GLShader>("texture.vs", GL_VERTEX_SHADER);
+	ps = std::make_shared<GLShader>("texture.ps", GL_FRAGMENT_SHADER);
 	prog = std::make_shared<GLProgram>(std::vector<GLShader>({ *vs, *ps }));
+
+	//Load basic color shaders
+	vs2 = std::make_shared<GLShader>("transform.vs", GL_VERTEX_SHADER);
+	ps2 = std::make_shared<GLShader>("wave.ps", GL_FRAGMENT_SHADER);
+	prog2 = std::make_shared<GLProgram>(std::vector<GLShader>({ *vs2, *ps2 }));
+
 	camera = std::make_shared<GLCamera>();
-
-	auto sphere = GLGeometry::GenSphere(8, 8);
-	num_vertices = sphere.numVertices();
-
-	vbuffer = std::make_shared<GLVertexBuffer>(num_vertices);
 	texture = std::make_shared<GLTexture>();
+	
+	numVertices = 4;
 
-	vbuffer->AddElement(&sphere.position[0], 3);
-	vbuffer->AddElement(&sphere.normal[0], 3);
-	vbuffer->AddElement(&sphere.color[0], 3);
-	vbuffer->AddElement(&sphere.texcoord[0], 2);
+	enable_blend = false;
+
+	//Create first (textured) rectangle:
+	vbuffer = std::make_shared<GLVertexBuffer>(numVertices);
+
+	float positionData[] = {
+		1.0f, 0.0f, 1.0f,
+		0.0f, 1.0f, 1.0f,
+		0.0f, -1.0f, 1.0f,
+		-1.0f, 0.0f, 1.0f
+	};
+
+	float texData[] = {
+		0.0f, 0.0f,
+		0.0f, 1.0f,
+		1.0f, 0.0f,
+		1.0f, 1.0f
+	};
+
+	vbuffer->AddElement(positionData, 3);
+	vbuffer->AddElement(texData, 2);
 	vbuffer->GenBuffers();
+	
+	//Create second rectangle (plain color):
+	vbuffer2 = std::make_shared<GLVertexBuffer>(numVertices);
+	float positionData2[] = {
+		1.0f, 0.0f, 0.0f,
+		0.0f, 1.0f, 0.0f,
+		0.0f, -1.0f, 0.0f,
+		-1.0f, 0.0f, 0.0f
+	};
 
-	glUseProgram(prog->GetHandle());
-	glBindVertexArray(vbuffer->GetHandle());
+	float colorData[] = {
+		1.0f, 0.0f, 0.0f,
+		0.0f, 1.0f, 0.0f,
+		0.0f, 0.0f, 1.0f,
+		1.0f, 1.0f, 0.0f
+	};
 
-	camera->SetupView(glm::vec3(0.0f,1.0f,1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+	vbuffer2->AddElement(positionData2, 3);
+	vbuffer2->AddElement(colorData, 3);
+	vbuffer2->GenBuffers();
 
-	texture->GetTextureFromFile("wood.jpg", GL_BGR);
+	//Load texture
+	texture->GetTextureFromFile("bird.png", GL_BGRA);
 	texture->LoadTextureToGPU();
+
+	camera->SetupView(glm::vec3(0.0f,2.0f,6.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 
 	GLMain::EnableDepthTest(true);
 }
 
 void GLApp006::RenderScene(double elapsedMilliseconds)
 {
-	camera->PlaceAt(glm::vec3(glm::sin(time)*8.0f, glm::cos(time)*8.0f, 2.0f));
+	//View point
+	glm::vec3 eye_pos = glm::vec3(glm::sin(time / 2.0)*2.0f, glm::cos(time / 2.0)*2.0f, 6.0f);	
+	camera->PlaceAt(eye_pos);
+	
+	//Clear existing buffer
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	
+	//Select basic shaders and colored object, and draw it
+	glUseProgram(prog2->GetHandle());
+	glBindVertexArray(vbuffer2->GetHandle());		
+	prog2->SetUniform("transform", camera->GetTransform());
+	prog2->SetUniform("color_phase", time);
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, numVertices);
+
+	//Select texture shaders and textured object, and draw it
+	glUseProgram(prog->GetHandle());
+	glBindVertexArray(vbuffer->GetHandle());
 	prog->SetUniform("transform", camera->GetTransform());
 	texture->Use(prog->GetUniformLocation("tex"));
-	time += 0.001f * (float)elapsedMilliseconds;
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glDrawArrays(GL_TRIANGLES, 0, num_vertices);
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, numVertices);
+		
+	//Display result on screen
 	glutSwapBuffers();
 	glutPostRedisplay();
+
+	//Increment elapsed time
+	time += 0.001f * (float)elapsedMilliseconds;
+}
+
+void GLApp006::HandleInput(unsigned char key, int x, int y)
+{
+	switch (key)
+	{
+	case 27:
+		running = false;
+		break;
+	case '1':
+		enable_blend = !enable_blend;
+		GLMain::EnableDepthTest(!enable_blend);
+		GLMain::EnableBlend(enable_blend);
+		break;
+	}
 }
 
 void GLApp006::ResizeFunction(int width, int height)
