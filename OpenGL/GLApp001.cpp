@@ -14,7 +14,7 @@ void GLApp001::InitScene()
 {
 	vs		= std::make_shared<GLShader>("basic.vs", GL_VERTEX_SHADER);
 	ps		= std::make_shared<GLShader>("basic.ps", GL_FRAGMENT_SHADER);
-	prog	= std::make_shared<GLProgram>(std::vector<GLShader>({ *vs, *ps }));
+	prog	= std::make_shared<GLProgram>(*vs,*ps);
 	vbuffer = std::make_shared<GLVertexBuffer>(3);
 
 	float positionData[] = {

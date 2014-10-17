@@ -14,18 +14,18 @@ GLApp007::GLApp007() :
 light_pos(5.0f, 5.0f, 0.0f),
 light_col(1.0f, 1.0f, 0.6f, 1.0f),
 mat_ambient(0.1f, 0.1f, 0.1f, 0.0f),
-mat_diffuse(0.0f),
-mat_specular(0.0f)
+mat_diffuse(1.0f),
+mat_specular(50.0f)
 {
 	InitScene();
 }
 
 void GLApp007::InitScene()
 {
-	vs = std::make_shared<GLShader>("lighting.vs", GL_VERTEX_SHADER);
-	ps = std::make_shared<GLShader>("lighting.ps", GL_FRAGMENT_SHADER);
-	prog = std::make_shared<GLProgram>(std::vector<GLShader>({ *vs, *ps }));
-	camera = std::make_shared<GLCamera>();
+	vs		= std::make_shared<GLShader>("lighting.vs", GL_VERTEX_SHADER);
+	ps		= std::make_shared<GLShader>("lighting.ps", GL_FRAGMENT_SHADER);
+	prog	= std::make_shared<GLProgram>(*vs, *ps);
+	camera	= std::make_shared<GLCamera>();
 	texture = std::make_shared<GLTexture>();
 
 	sphere = GLGeometry::GenSphere(48, 48);

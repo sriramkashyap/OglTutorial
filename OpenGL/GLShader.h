@@ -28,6 +28,7 @@ protected:
 	GLuint Compile(const std::vector<GLShader> &shaders);	
 public:
 
+	GLProgram(GLShader &vs, GLShader &ps);
 	GLProgram(std::vector<GLShader> &shaders);
 	GLuint GetHandle() const;
 	

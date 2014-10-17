@@ -80,7 +80,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\opengl\eigen\;C:\opengl\glew\include;C:\opengl\freeglut\include;C:\opengl\glm;C:\opengl\FreeImage\Dist</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\opengl\glew\include;C:\opengl\freeglut\include;C:\opengl\glm;C:\opengl\FreeImage\Dist</IncludePath>
     <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);C:\opengl\glew\lib\Release\Win32;C:\opengl\freeglut\lib;C:\opengl\FreeImage\Dist</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

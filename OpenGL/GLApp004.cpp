@@ -14,9 +14,9 @@ GLApp004::GLApp004()
 
 void GLApp004::InitScene()
 {
-	vs = std::make_shared<GLShader>("texture.vs", GL_VERTEX_SHADER);
-	ps = std::make_shared<GLShader>("texture.ps", GL_FRAGMENT_SHADER);
-	prog = std::make_shared<GLProgram>(std::vector<GLShader>({ *vs, *ps }));
+	vs		= std::make_shared<GLShader>("texture.vs", GL_VERTEX_SHADER);
+	ps		= std::make_shared<GLShader>("texture.ps", GL_FRAGMENT_SHADER);
+	prog	= std::make_shared<GLProgram>(*vs, *ps);
 	vbuffer = std::make_shared<GLVertexBuffer>(4);
 	texture = std::make_shared<GLTexture>();
 

@@ -67,7 +67,7 @@ void GLTexture::GenerateTexture(GLuint width, GLuint height, GlTextureGenerator 
 	{
 	case GL_TEXGEN_CHECKER:
 		//Create a checker board pattern with every 4x4 pixels being either black or white.
-		for (uint32_t i = 0; i < width * height; i++)
+		for (unsigned int i = 0; i < width * height; i++)
 		{
 			int row = (i / height) % 8;
 			int col = (i % width) % 8;
@@ -76,7 +76,7 @@ void GLTexture::GenerateTexture(GLuint width, GLuint height, GlTextureGenerator 
 		break;
 	case GL_TEXGEN_RANDOM:
 		//Random RGBA values
-		for (uint32_t i = 0; i < width * height; i++)
+		for (unsigned int i = 0; i < width * height; i++)
 		{
 			float randval = static_cast<float>(rand()) / RAND_MAX;
 			dwordptr[i] = static_cast<GLuint>(0xFFFFFFFF * randval);

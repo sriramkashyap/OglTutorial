@@ -2,7 +2,7 @@ OglTutorial
 ===========
 
 Getting Started:
-
+----------------
 > Download and install Visual Studio 2013 Express Edition for Desktop Applications
   Link : http://www.microsoft.com/en-in/download/details.aspx?id=40787
   
@@ -37,7 +37,22 @@ Getting Started:
     C:\opengl\FreeImage\Dist\FreeImage.lib
     C:\opengl\FreeImage\Dist\FreeImage.h
 
-Now, open 'OpenGL.sln' in VS 2013, build and run the application. 
-You should see the first sample application(a triangle). 
-Press escape to launch the next sample, and the next...
+Build and Run:
+--------------
+	Now, open 'OpenGL.sln' in VS 2013, build and run the application. 
+	You should see the first sample application(a triangle). 
+	Press escape to launch the next sample, and the next...
+	Controls can be accessed through number keys
 
+Using a different compiler (g++/Visual Studio 2011...):
+-------------------------------------------------------
+> Create a new project / makefile and include all the cpp/header files
+
+> Add this to the compiler include path (modify paths as necessary):
+	C:\opengl\glew\include;C:\opengl\freeglut\include;C:\opengl\glm;C:\opengl\FreeImage\Dist
+	
+> Add this to the library path (modify paths as necessary):
+	C:\opengl\glew\lib\Release\Win32;C:\opengl\freeglut\lib;C:\opengl\FreeImage\Dist
+	
+> Add this to the library list:
+	freeglut.lib;glew32.lib;FreeImage.lib

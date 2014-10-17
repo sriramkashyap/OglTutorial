@@ -11,16 +11,16 @@ GLApp003::GLApp003()
 {
 	InitScene();
 	animating = true;
-	rotating = false;
-	displacement = 0.0f;
+	rotating = true;
+	displacement = 0.1f;
 }
 
 void GLApp003::InitScene()
 {
-	vs = std::make_shared<GLShader>("wave.vs", GL_VERTEX_SHADER);
-	ps = std::make_shared<GLShader>("basic.ps", GL_FRAGMENT_SHADER);
-	prog = std::make_shared<GLProgram>(std::vector<GLShader>({ *vs, *ps }));
-	camera = std::make_shared<GLCamera>();
+	vs		= std::make_shared<GLShader>("wave.vs", GL_VERTEX_SHADER);
+	ps		= std::make_shared<GLShader>("basic.ps", GL_FRAGMENT_SHADER);
+	prog	= std::make_shared<GLProgram>(*vs, *ps);
+	camera	= std::make_shared<GLCamera>();
 
 	auto mesh = GLGeometry::Gen2DMesh(64);
 	num_vertices = mesh.numVertices();

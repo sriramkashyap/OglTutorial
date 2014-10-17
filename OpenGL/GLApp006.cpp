@@ -18,9 +18,9 @@ GLApp006::GLApp006()
 void GLApp006::InitScene()
 {
 	//Load texture shaders
-	vs = std::make_shared<GLShader>("texture.vs", GL_VERTEX_SHADER);
-	ps = std::make_shared<GLShader>("texture.ps", GL_FRAGMENT_SHADER);
-	prog = std::make_shared<GLProgram>(std::vector<GLShader>({ *vs, *ps }));
+	vs		= std::make_shared<GLShader>("texture.vs", GL_VERTEX_SHADER);
+	ps		= std::make_shared<GLShader>("texture.ps", GL_FRAGMENT_SHADER);
+	prog	= std::make_shared<GLProgram>(*vs, *ps);
 
 	//Load basic color shaders
 	vs2 = std::make_shared<GLShader>("transform.vs", GL_VERTEX_SHADER);
@@ -32,7 +32,7 @@ void GLApp006::InitScene()
 	
 	numVertices = 4;
 
-	enable_blend = false;
+	enable_blend = true;
 
 	//Create first (textured) rectangle:
 	vbuffer = std::make_shared<GLVertexBuffer>(numVertices);
@@ -82,6 +82,7 @@ void GLApp006::InitScene()
 	camera->SetupView(glm::vec3(0.0f,2.0f,6.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 
 	GLMain::EnableDepthTest(true);
+	GLMain::EnableBlend(enable_blend);
 }
 
 void GLApp006::RenderScene(double elapsedMilliseconds)
@@ -124,7 +125,6 @@ void GLApp006::HandleInput(unsigned char key, int x, int y)
 		break;
 	case '1':
 		enable_blend = !enable_blend;
-		GLMain::EnableDepthTest(!enable_blend);
 		GLMain::EnableBlend(enable_blend);
 		break;
 	}

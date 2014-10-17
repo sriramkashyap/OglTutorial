@@ -47,6 +47,13 @@ GLuint GLShader::GetHandle() const
 	return shader_handle;
 }
 
+GLProgram::GLProgram(GLShader &vs, GLShader &ps)
+{
+	shader_list.push_back(vs);
+	shader_list.push_back(ps);
+	program_handle = Compile(shader_list);
+}
+
 GLProgram::GLProgram(std::vector<GLShader> &shaders)
 {
 	shader_list = shaders;
