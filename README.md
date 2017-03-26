@@ -3,8 +3,8 @@ OglTutorial
 
 Getting Started:
 ----------------
-> Download and install Visual Studio 2013 Express Edition for Desktop Applications
-  Link : http://www.microsoft.com/en-in/download/details.aspx?id=40787
+> Download and install Visual Studio 2015 Community Edition
+  Link : https://www.microsoft.com/en-in/download/details.aspx?id=48146
   
 > Download freeglut binary release for MSVC and unzip it to "C:\opengl\freeglut"
   Link : http://www.transmissionzero.co.uk/software/freeglut-devel/ 
@@ -39,7 +39,7 @@ Getting Started:
 
 Build and Run:
 --------------
-	Now, open 'OpenGL.sln' in VS 2013, build and run the application. 
+	Now, open 'OpenGL.sln' in Visual Studio, build and run the application. 
 	You should see the first sample application(a triangle). 
 	Press escape to launch the next sample, and the next...
 	Controls can be accessed through number keys
