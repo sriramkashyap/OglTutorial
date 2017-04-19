@@ -106,6 +106,12 @@ void GLMain::EnableBlend(bool value)
 	}
 }
 
+void GLMain::ClampTexture()
+{
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+}
+
 bool GLMain::Initialized()
 {
 	return initialized_glut;

@@ -28,26 +28,26 @@ public:
 	virtual void ResizeFunction(int width, int height);
 };
 
-class GLApp001 : public SimpleGLApp
+class GLApp_FirstTriangle : public SimpleGLApp
 {
 public:
-	GLApp001();
+	GLApp_FirstTriangle();
 	void InitScene();
 	void RenderScene(double elapsedMilliseconds);
 };
 
-class GLApp002 : public SimpleGLApp
+class GLApp_CameraBasics : public SimpleGLApp
 {
 protected:
 	std::shared_ptr<GLCamera> camera;
 public:
-	GLApp002();
+	GLApp_CameraBasics();
 	void InitScene();
 	void RenderScene(double elapsedMilliseconds);
 	void ResizeFunction(int width, int height);
 };
 
-class GLApp003 : public SimpleGLApp
+class GLApp_WavyMesh : public SimpleGLApp
 {
 protected:
 	int num_vertices;
@@ -55,38 +55,40 @@ protected:
 	float displacement;
 	std::shared_ptr<GLCamera> camera;
 public:
-	GLApp003();
+	GLApp_WavyMesh();
 	void InitScene();
 	void RenderScene(double elapsedMilliseconds);
 	void HandleInput(unsigned char key, int x, int y);
 	void ResizeFunction(int width, int height);
 };
 
-class GLApp004 : public SimpleGLApp
+class GLApp_CreateTexture : public SimpleGLApp
 {
 protected:
 	std::shared_ptr<GLTexture> texture;
 	std::shared_ptr<GLCamera> camera;
 public:
-	GLApp004();
+	GLApp_CreateTexture();
 	void InitScene();
 	void RenderScene(double elapsedMilliseconds);
 	void ResizeFunction(int width, int height);
 };
 
-class GLApp005 : public SimpleGLApp
+class GLApp_WoodTexture : public SimpleGLApp
 {
 protected:
 	std::shared_ptr<GLTexture> texture;
 	std::shared_ptr<GLCamera> camera;
+	glm::vec2 tex_scale, tex_offset;
 public:
-	GLApp005();
+	GLApp_WoodTexture();
 	void InitScene();
 	void RenderScene(double elapsedMilliseconds);
+	void HandleInput(unsigned char key, int x, int y);
 	void ResizeFunction(int width, int height);
 };
 
-class GLApp006 : public SimpleGLApp
+class GLApp_Blending : public SimpleGLApp
 {
 protected:
 	int numVertices;
@@ -101,14 +103,14 @@ protected:
 	bool enable_blend;
 
 public:
-	GLApp006();
+	GLApp_Blending();
 	void InitScene();
 	void RenderScene(double elapsedMilliseconds);
 	void HandleInput(unsigned char key, int x, int y);
 	void ResizeFunction(int width, int height);
 };
 
-class GLApp007 : public SimpleGLApp
+class GLApp_Cueball : public SimpleGLApp
 {
 protected:
 	std::shared_ptr<GLCamera> camera;
@@ -121,7 +123,7 @@ protected:
 	float mat_diffuse, mat_specular;
 
 public:
-	GLApp007();
+	GLApp_Cueball();
 	void InitScene();
 	void RenderScene(double elapsedMilliseconds);
 	void HandleInput(unsigned char key, int x, int y);

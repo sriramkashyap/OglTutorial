@@ -6,14 +6,14 @@ int main(int argc, char **argv)
 {
 	GLMain::InitializeGLUT();
 
-	GLMain::Run(GLApp001());	//Single triangle (Basics)
-	GLMain::Run(GLApp002());	//Rotating square (Camera)
-	GLMain::Run(GLApp003());	//Wavy Mesh (Vertex Animation)
-	GLMain::Run(GLApp004());	//Random texture (Textures)
-	GLMain::Run(GLApp005());	//Wood texture (FreeImage)
-	GLMain::Run(GLApp006());	//Blending and drawing multiple objects
-	GLMain::Run(GLApp007());	//Cueball lighting demo
-
+	GLMain::Run(GLApp_FirstTriangle());	//Single triangle (Basics)
+	GLMain::Run(GLApp_CameraBasics());	//Rotating square (Camera)
+	GLMain::Run(GLApp_WavyMesh());		//Wavy Mesh (Vertex Animation)
+	GLMain::Run(GLApp_CreateTexture());	//Random texture (Textures)
+	GLMain::Run(GLApp_WoodTexture());	//Wood texture (FreeImage)
+	GLMain::Run(GLApp_Blending());		//Blending and drawing multiple objects
+	GLMain::Run(GLApp_Cueball());		//Cueball lighting demo
+	
 	std::cout << "OpenGL Test Completed" << std::endl;
 	return 0;
 }

@@ -22,10 +22,14 @@ namespace GLGeometry
 		GLModel model;
 
 		//Calculate positions of triangles
-		float delta = 2.0f / subdiv;
-		std::vector<float> &posdata = model.position;
-
+		std::vector<float> &posdata		= model.position;
+		std::vector<float> &colordata	= model.color;
+		std::vector<float> &texdata		= model.texcoord;
+		std::vector<float> &normdata	= model.normal;
+		
+		//Generate Position data
 		float x_offset = -1.0f, y_offset = -1.0f;
+		float delta = 2.0f / subdiv;
 		for (int x = 0; x < subdiv; x++)
 		{
 			for (int y = 0; y < subdiv; y++)
@@ -37,16 +41,42 @@ namespace GLGeometry
 				PushVertex3(posdata, x_offset, y_offset + delta);
 				PushVertex3(posdata, x_offset + delta, y_offset);
 				PushVertex3(posdata, x_offset + delta, y_offset + delta);
-
 				y_offset += delta;
 			}
 			x_offset += delta;
 			y_offset = -1.0f;
 		}
 
-		//Calculate color values for each position
+		//Normal vectors for each vertex are same
+		for (unsigned int n = 0; n < posdata.size(); n++)
+		{
+			PushVertex3(normdata, 0.0, 0.0, 1.0);
+		}
+
+		//Generate texture coordinates (0.0 to 1.0)
+		x_offset = 0.0f;
+		y_offset = 0.0f;
+		delta = 1.0f / subdiv;
+		for (int x = 0; x < subdiv; x++)
+		{
+			for (int y = 0; y < subdiv; y++)
+			{
+				PushVertex2(texdata, x_offset, y_offset);
+				PushVertex2(texdata, x_offset + delta, y_offset);
+				PushVertex2(texdata, x_offset, y_offset + delta);
+
+				PushVertex2(texdata, x_offset, y_offset + delta);
+				PushVertex2(texdata, x_offset + delta, y_offset);
+				PushVertex2(texdata, x_offset + delta, y_offset + delta);
+
+				y_offset += delta;
+			}
+			x_offset += delta;
+			y_offset = 0.0f;
+		}
+		
+		//Generate some smoothly varying color values for each vertex
 		int count = subdiv*subdiv*6;
-		std::vector<float> &colordata = model.color;
 		int b_offset = count * 2 / 3;
 		float reciprocal = 1.0f / count;
 
@@ -104,7 +134,7 @@ namespace GLGeometry
 				PushVertex3(position, x22, y22, z2);
 				PushVertex3(position, x12, y12, z1);
 
-				//Color data. just use |position| here...
+				//Some color data. just use |position| here...
 				PushVertex3(color, fabs(x11), fabs(y11), fabs(z1));
 				PushVertex3(color, fabs(x21), fabs(y21), fabs(z2));
 				PushVertex3(color, fabs(x22), fabs(y22), fabs(z2));
@@ -113,14 +143,14 @@ namespace GLGeometry
 				PushVertex3(color, fabs(x22), fabs(y22), fabs(z2));
 				PushVertex3(color, fabs(x12), fabs(y12), fabs(z1));
 
-				//Normal vectors, again same as position because this is a unit sphere.
-				PushVertex3(normal, x11, y11, z1);
-				PushVertex3(normal, x21, y21, z2);
-				PushVertex3(normal, x22, y22, z2);
+				//Normal vectors, again same as position (x,y) because this is a unit circle.
+				PushVertex3(normal, x11, y11, 0.0f);
+				PushVertex3(normal, x21, y21, 0.0f);
+				PushVertex3(normal, x22, y22, 0.0f);
 
-				PushVertex3(normal, x11, y11, z1);
-				PushVertex3(normal, x22, y22, z2);
-				PushVertex3(normal, x12, y12, z1);
+				PushVertex3(normal, x11, y11, 0.0f);
+				PushVertex3(normal, x22, y22, 0.0f);
+				PushVertex3(normal, x12, y12, 0.0f);
 
 				//Texture coordinates
 				PushVertex2(texcoord, static_cast<float>(j) / slices, static_cast<float>(i) / segments);
@@ -130,7 +160,6 @@ namespace GLGeometry
 				PushVertex2(texcoord, static_cast<float>(j) / slices, static_cast<float>(i) / segments);
 				PushVertex2(texcoord, static_cast<float>(j + 1) / slices, static_cast<float>(i + 1) / segments);
 				PushVertex2(texcoord, static_cast<float>(j + 1) / slices, static_cast<float>(i) / segments);
-
 			}
 		}
 

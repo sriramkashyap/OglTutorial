@@ -10,7 +10,7 @@
 
 using namespace GLGeometry;
 
-GLApp007::GLApp007() :
+GLApp_Cueball::GLApp_Cueball() :
 light_pos(5.0f, 5.0f, 0.0f),
 light_col(1.0f, 1.0f, 0.6f, 1.0f),
 mat_ambient(0.1f, 0.1f, 0.1f, 0.0f),
@@ -20,7 +20,7 @@ mat_specular(50.0f)
 	InitScene();
 }
 
-void GLApp007::InitScene()
+void GLApp_Cueball::InitScene()
 {
 	vs		= std::make_shared<GLShader>("lighting.vs", GL_VERTEX_SHADER);
 	ps		= std::make_shared<GLShader>("lighting.ps", GL_FRAGMENT_SHADER);
@@ -50,7 +50,7 @@ void GLApp007::InitScene()
 	GLMain::EnableBlend(false);
 }
 
-void GLApp007::RenderScene(double elapsedMilliseconds)
+void GLApp_Cueball::RenderScene(double elapsedMilliseconds)
 {
 	//Overall settings
 	glm::vec3 eye_pos = glm::vec3(glm::sin(time / 2.0)*8.0f, glm::cos(time / 2.0)*8.0f, 0.0f);
@@ -83,7 +83,7 @@ void GLApp007::RenderScene(double elapsedMilliseconds)
 	time += 0.001f * (float)elapsedMilliseconds;
 }
 
-void GLApp007::HandleInput(unsigned char key, int x, int y)
+void GLApp_Cueball::HandleInput(unsigned char key, int x, int y)
 {
 	switch (key)
 	{
@@ -112,7 +112,7 @@ void GLApp007::HandleInput(unsigned char key, int x, int y)
 	}
 }
 
-void GLApp007::ResizeFunction(int width, int height)
+void GLApp_Cueball::ResizeFunction(int width, int height)
 {
 	glViewport(0, 0, width, height);
 	camera->SetupProjection(75.0f, static_cast<float>(width) / height, 0.001f, 1000.0f);

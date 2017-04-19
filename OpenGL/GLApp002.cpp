@@ -6,12 +6,12 @@
 #include "GLVertexBuffer.h"
 #include "GLApps.h"
 
-GLApp002::GLApp002()
+GLApp_CameraBasics::GLApp_CameraBasics()
 {
 	InitScene();
 }
 
-void GLApp002::InitScene()
+void GLApp_CameraBasics::InitScene()
 {
 	vs		= std::make_shared<GLShader>("transform.vs", GL_VERTEX_SHADER);
 	ps		= std::make_shared<GLShader>("basic.ps", GL_FRAGMENT_SHADER);
@@ -44,7 +44,7 @@ void GLApp002::InitScene()
 	camera->SetupView(glm::vec3(0.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 }
 
-void GLApp002::RenderScene(double elapsedMilliseconds)
+void GLApp_CameraBasics::RenderScene(double elapsedMilliseconds)
 {
 	camera->PlaceAt(glm::vec3(glm::sin(time)*4.0f, glm::cos(time)*4.0f, 1.0f));
 	prog->SetUniform("transform", camera->GetTransform());
@@ -55,7 +55,7 @@ void GLApp002::RenderScene(double elapsedMilliseconds)
 	glutPostRedisplay();
 }
 
-void GLApp002::ResizeFunction(int width, int height)
+void GLApp_CameraBasics::ResizeFunction(int width, int height)
 {
 	glViewport(0, 0, width, height);
 	camera->SetupProjection(75.0f, static_cast<float>(width) / height, 0.001f, 1000.0f);

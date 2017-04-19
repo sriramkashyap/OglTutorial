@@ -7,7 +7,7 @@
 #include "GLGeometry.h"
 #include "GLApps.h"
 
-GLApp003::GLApp003()
+GLApp_WavyMesh::GLApp_WavyMesh()
 {
 	InitScene();
 	animating = true;
@@ -15,7 +15,7 @@ GLApp003::GLApp003()
 	displacement = 0.1f;
 }
 
-void GLApp003::InitScene()
+void GLApp_WavyMesh::InitScene()
 {
 	vs		= std::make_shared<GLShader>("wave.vs", GL_VERTEX_SHADER);
 	ps		= std::make_shared<GLShader>("basic.ps", GL_FRAGMENT_SHADER);
@@ -40,7 +40,7 @@ void GLApp003::InitScene()
 	GLMain::EnableDepthTest(true);
 }
 
-void GLApp003::RenderScene(double elapsedMilliseconds)
+void GLApp_WavyMesh::RenderScene(double elapsedMilliseconds)
 {
 	if (rotating)
 	{
@@ -61,7 +61,7 @@ void GLApp003::RenderScene(double elapsedMilliseconds)
 	glutPostRedisplay();
 }
 
-void GLApp003::HandleInput(unsigned char key, int x, int y)
+void GLApp_WavyMesh::HandleInput(unsigned char key, int x, int y)
 {
 	switch (key)
 	{
@@ -89,7 +89,7 @@ void GLApp003::HandleInput(unsigned char key, int x, int y)
 	}
 }
 
-void GLApp003::ResizeFunction(int width, int height)
+void GLApp_WavyMesh::ResizeFunction(int width, int height)
 {
 	glViewport(0, 0, width, height);
 	camera->SetupProjection(75.0f, static_cast<float>(width) / height, 0.001f, 1000.0f);

@@ -10,12 +10,12 @@
 
 using namespace GLGeometry;
 
-GLApp006::GLApp006()
+GLApp_Blending::GLApp_Blending()
 {
 	InitScene();
 }
 
-void GLApp006::InitScene()
+void GLApp_Blending::InitScene()
 {
 	//Load texture shaders
 	vs		= std::make_shared<GLShader>("texture.vs", GL_VERTEX_SHADER);
@@ -85,7 +85,7 @@ void GLApp006::InitScene()
 	GLMain::EnableBlend(enable_blend);
 }
 
-void GLApp006::RenderScene(double elapsedMilliseconds)
+void GLApp_Blending::RenderScene(double elapsedMilliseconds)
 {
 	//View point
 	glm::vec3 eye_pos = glm::vec3(glm::sin(time / 2.0)*2.0f, glm::cos(time / 2.0)*2.0f, 6.0f);	
@@ -116,7 +116,7 @@ void GLApp006::RenderScene(double elapsedMilliseconds)
 	time += 0.001f * (float)elapsedMilliseconds;
 }
 
-void GLApp006::HandleInput(unsigned char key, int x, int y)
+void GLApp_Blending::HandleInput(unsigned char key, int x, int y)
 {
 	switch (key)
 	{
@@ -130,7 +130,7 @@ void GLApp006::HandleInput(unsigned char key, int x, int y)
 	}
 }
 
-void GLApp006::ResizeFunction(int width, int height)
+void GLApp_Blending::ResizeFunction(int width, int height)
 {
 	glViewport(0, 0, width, height);
 	camera->SetupProjection(75.0f, static_cast<float>(width) / height, 0.001f, 1000.0f);

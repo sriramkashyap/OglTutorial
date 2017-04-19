@@ -7,12 +7,12 @@
 #include "GLTexture.h"
 #include "GLApps.h"
 
-GLApp004::GLApp004()
+GLApp_CreateTexture::GLApp_CreateTexture()
 {
 	InitScene();
 }
 
-void GLApp004::InitScene()
+void GLApp_CreateTexture::InitScene()
 {
 	vs		= std::make_shared<GLShader>("texture.vs", GL_VERTEX_SHADER);
 	ps		= std::make_shared<GLShader>("texture.ps", GL_FRAGMENT_SHADER);
@@ -51,7 +51,7 @@ void GLApp004::InitScene()
 	GLMain::EnableDepthTest(false);
 }
 
-void GLApp004::RenderScene(double elapsedMilliseconds)
+void GLApp_CreateTexture::RenderScene(double elapsedMilliseconds)
 {
 	camera->PlaceAt(glm::vec3(glm::sin(time)*4.0f, glm::cos(time)*4.0f, 2.0f));
 	prog->SetUniform("transform", camera->GetTransform());
@@ -63,7 +63,7 @@ void GLApp004::RenderScene(double elapsedMilliseconds)
 	glutPostRedisplay();
 }
 
-void GLApp004::ResizeFunction(int width, int height)
+void GLApp_CreateTexture::ResizeFunction(int width, int height)
 {
 	glViewport(0, 0, width, height);
 	camera->SetupProjection(75.0f, static_cast<float>(width) / height, 0.001f, 1000.0f);

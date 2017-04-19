@@ -18,7 +18,7 @@ void main()
 	//We do this because it is more intuitive to do lighting in world coordinates than final view coordinates.
 	world_pos	= world_transform * vec4(VertexPosition,1.0);
 
-	//Normal vectors are transformed slightly differently from position because you can't Translate an normal.
+	//Normal vectors are transformed slightly differently from position because you can't Translate a normal.
 	//To use a regular 4x4 transform matrix on a 3d direction vector (like the normal), we convert the normal...
 	//into a 4d vector with w = 0.0. This will take care of discarding any translation in the 4x4 transform matrix.
 	world_normal= (world_transform * vec4(VertexNormal, 0.0)).xyz;

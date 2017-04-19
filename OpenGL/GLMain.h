@@ -30,6 +30,7 @@ public:
 
 	static void EnableDepthTest(bool value);
 	static void EnableBlend(bool value);
+	static void ClampTexture();
 };
 
 #endif

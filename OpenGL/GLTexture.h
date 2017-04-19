@@ -28,6 +28,8 @@ public:
 	void GetTextureFromFile(std::string fname, GLenum format = 0);
 	void LoadTextureToGPU();
 	void Use(GLuint uniform_loc, GLuint texture_position = 0);
+	GLuint GetWidth() const { return width; }
+	GLuint GetHeight() const { return height; }
 	~GLTexture();
 };
 

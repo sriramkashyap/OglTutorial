@@ -5,12 +5,12 @@
 #include "GLVertexBuffer.h"
 #include "GLApps.h"
 
-GLApp001::GLApp001()
+GLApp_FirstTriangle::GLApp_FirstTriangle()
 {
 	InitScene();
 }
 
-void GLApp001::InitScene()
+void GLApp_FirstTriangle::InitScene()
 {
 	vs		= std::make_shared<GLShader>("basic.vs", GL_VERTEX_SHADER);
 	ps		= std::make_shared<GLShader>("basic.ps", GL_FRAGMENT_SHADER);
@@ -37,7 +37,7 @@ void GLApp001::InitScene()
 	glBindVertexArray(vbuffer->GetHandle());
 }
 
-void GLApp001::RenderScene(double elapsedMilliseconds)
+void GLApp_FirstTriangle::RenderScene(double elapsedMilliseconds)
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 	glDrawArrays(GL_TRIANGLES, 0, 3);
