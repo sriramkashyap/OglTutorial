@@ -11,6 +11,7 @@ class GLProgram;
 class GLVertexBuffer;
 class GLTexture;
 class GLCamera;
+class GLTransform;
 
 class SimpleGLApp : public GLApplication
 {
@@ -129,6 +130,5 @@ public:
 	void HandleInput(unsigned char key, int x, int y);
 	void ResizeFunction(int width, int height);
 };
-
 
 #endif

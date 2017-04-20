@@ -18,6 +18,7 @@ namespace GLGeometry
 		}
 	};
 
+	GLModel GenBillBoard();
 	GLModel Gen2DMesh(int subdiv);
 	GLModel GenSphere(int segments, int slices);
 	GLModel GenCylinder(int segments, int slices);

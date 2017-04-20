@@ -38,6 +38,7 @@ public:
 	void Rotate(glm::vec3 axis, float angle);
 	void Scale(glm::vec3 factor);
 	glm::mat4 GetTransform();
+	void Billboard(glm::vec3 facing, glm::vec3 up);
 
 };
 

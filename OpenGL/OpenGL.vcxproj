@@ -157,6 +157,7 @@
     <ClCompile Include="GLApp005.cpp" />
     <ClCompile Include="GLApp006.cpp" />
     <ClCompile Include="GLApp007.cpp" />
+    <ClCompile Include="GLAppEarth.cpp" />
     <ClCompile Include="GLApps.cpp" />
     <ClCompile Include="GLGeometry.cpp" />
     <ClCompile Include="GLMain.cpp" />
@@ -177,6 +178,7 @@
     <Text Include="texture.vs" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GLAppEarth.h" />
     <ClInclude Include="GLGeometry.h" />
     <ClInclude Include="GLIncludes.h" />
     <ClInclude Include="GLMain.h" />
@@ -188,6 +190,8 @@
     <ClInclude Include="GLApps.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="earth.ps" />
+    <None Include="earth.vs" />
     <None Include="lighting.ps" />
     <None Include="lighting.vs" />
     <None Include="texture.ps" />

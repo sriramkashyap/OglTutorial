@@ -1,0 +1,65 @@
+#version 400
+in vec3 world_pos;
+in vec3 world_normal;
+in vec3 color;
+in vec2 texcoord;
+
+layout(location = 0) out vec4 FragColor;
+
+uniform sampler2D earth;
+uniform sampler2D clouds;
+uniform sampler2D night;
+
+uniform vec2 cloud_offset;
+
+uniform vec3 light_pos;
+uniform vec3 eye_pos;
+
+uniform vec4 light_col;
+
+uniform vec4 mat_ambient;
+uniform float mat_diffuse;
+uniform float mat_specular;
+
+void main()
+{
+	//Get surface color
+	vec4 surface_color	= texture(earth, texcoord);
+
+	//Get night color
+	vec4 night_color	= texture(night,texcoord) * 0.5f;
+
+	//Get cloud color
+	vec4 cloud_color	= texture(clouds, texcoord + cloud_offset);
+
+	//Add cloud color to surface
+	surface_color		+= cloud_color;
+
+	//Ambient component
+	vec4 ambient_color = surface_color * mat_ambient;
+
+	//Renormalize normal vector since it is no longer correct after linear interpolation
+	vec3 true_normal	= normalize(world_normal);
+
+	//Diffuse component
+	vec3 light_vec		= normalize(light_pos - world_pos);
+	float light_dot_n	= dot(light_vec,true_normal);
+	float diffuse		= max(0.0f,light_dot_n);
+	vec4 diffuse_color	= surface_color * light_col * mat_diffuse * diffuse;
+	
+	//Specular component
+	vec3 reflect_vec	= 2.0f * light_dot_n * true_normal - light_vec;
+	vec3 eye_vector		= normalize(eye_pos - world_pos);
+	float eye_dot_n		= max(0.0f,dot(eye_vector, reflect_vec));
+	float specular		= eye_dot_n * eye_dot_n; //pow(eye_dot_n,mat_specular);
+	vec4 specular_color = light_col * specular;
+
+	//Make only the water specular
+	float specularity	= max(0.0,dot(surface_color,vec4(-3.0,-3.0,4.0,0.0)));
+
+	//Find out if lights are on or not (inverse of diffuse)
+	float night_mode	= 1.0f - diffuse;
+	night_color			= night_color * night_mode;
+	
+	FragColor		= ambient_color + diffuse_color + (specular_color*specularity) + night_color;
+}

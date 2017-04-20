@@ -16,6 +16,30 @@ namespace GLGeometry
 		geometry.push_back(x);
 		geometry.push_back(y);
 	}
+	
+	GLModel GenBillBoard()
+	{
+		GLModel model;
+
+		std::vector<float> &posdata = model.position;
+		std::vector<float> &texdata = model.texcoord;
+
+		PushVertex3(posdata, 1.0, 0.0, 0.0);
+		PushVertex3(posdata, 0.0, 0.0, 1.0);
+		PushVertex3(posdata, 0.0, 0.0, -1.0);
+		PushVertex3(posdata, 0.0, 0.0, 1.0);
+		PushVertex3(posdata, 0.0, 0.0, -1.0);
+		PushVertex3(posdata, -1.0, 0.0, 0.0);
+
+		PushVertex2(texdata, 0.0, 0.0);
+		PushVertex2(texdata, 0.0, 1.0);
+		PushVertex2(texdata, 1.0, 0.0);
+		PushVertex2(texdata, 0.0, 1.0);
+		PushVertex2(texdata, 1.0, 0.0);
+		PushVertex2(texdata, 1.0, 1.0);
+
+		return model;
+	}
 
 	GLModel Gen2DMesh(int subdiv)
 	{

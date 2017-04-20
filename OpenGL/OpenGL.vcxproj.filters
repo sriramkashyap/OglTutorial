@@ -66,6 +66,9 @@
     <ClCompile Include="GLApp007.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GLAppEarth.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="basic.vs">
@@ -106,6 +109,9 @@
     <ClInclude Include="GLTexture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GLAppEarth.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="transform.vs">
@@ -124,6 +130,12 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="wave.ps">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="earth.ps">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="earth.vs">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

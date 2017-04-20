@@ -107,3 +107,13 @@ glm::mat4 GLTransform::GetTransform()
 	if (dirty) { ComputeTransform(); }
 	return transform;
 }
+
+void GLTransform::Billboard(glm::vec3 facing, glm::vec3 up)
+{
+	//Replaces rotation matrix
+	glm::vec3 face_vector = glm::normalize(facing);
+	glm::vec3 side_vector = glm::normalize(glm::cross(face_vector, up));
+	glm::vec3 up_vector = glm::normalize(glm::cross(side_vector, face_vector));
+	glm::mat3 rot3(side_vector, face_vector, up_vector);
+	rotate = glm::mat4(rot3);
+}
