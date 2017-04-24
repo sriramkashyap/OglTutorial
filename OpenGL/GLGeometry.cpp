@@ -1,6 +1,7 @@
 #include "GLGeometry.h"
 
 #include <algorithm>
+#include <cmath>
 
 namespace GLGeometry
 {
@@ -139,15 +140,15 @@ namespace GLGeometry
 				float theta1 = two_pi * j / slices;
 				float theta2 = two_pi * (j + 1) / slices;
 
-				float x11 = radius1 * std::cosf(theta1);
-				float x12 = radius1 * std::cosf(theta2);
-				float x21 = radius2 * std::cosf(theta1);
-				float x22 = radius2 * std::cosf(theta2);
+				float x11 = radius1 * std::cos(theta1);
+				float x12 = radius1 * std::cos(theta2);
+				float x21 = radius2 * std::cos(theta1);
+				float x22 = radius2 * std::cos(theta2);
 
-				float y11 = radius1 * std::sinf(theta1);
-				float y12 = radius1 * std::sinf(theta2);
-				float y21 = radius2 * std::sinf(theta1);
-				float y22 = radius2 * std::sinf(theta2);
+				float y11 = radius1 * std::sin(theta1);
+				float y12 = radius1 * std::sin(theta2);
+				float y21 = radius2 * std::sin(theta1);
+				float y22 = radius2 * std::sin(theta2);
 
 				//Position data for sphere
 				PushVertex3(position, x11, y11, z1);
@@ -159,13 +160,13 @@ namespace GLGeometry
 				PushVertex3(position, x12, y12, z1);
 
 				//Some color data. just use |position| here...
-				PushVertex3(color, fabs(x11), fabs(y11), fabs(z1));
-				PushVertex3(color, fabs(x21), fabs(y21), fabs(z2));
-				PushVertex3(color, fabs(x22), fabs(y22), fabs(z2));
+				PushVertex3(color, std::abs(x11), std::abs(y11), std::abs(z1));
+				PushVertex3(color, std::abs(x21), std::abs(y21), std::abs(z2));
+				PushVertex3(color, std::abs(x22), std::abs(y22), std::abs(z2));
 
-				PushVertex3(color, fabs(x11), fabs(y11), fabs(z1));
-				PushVertex3(color, fabs(x22), fabs(y22), fabs(z2));
-				PushVertex3(color, fabs(x12), fabs(y12), fabs(z1));
+				PushVertex3(color, std::abs(x11), std::abs(y11), std::abs(z1));
+				PushVertex3(color, std::abs(x22), std::abs(y22), std::abs(z2));
+				PushVertex3(color, std::abs(x12), std::abs(y12), std::abs(z1));
 
 				//Normal vectors, again same as position (x,y) because this is a unit circle.
 				PushVertex3(normal, x11, y11, 0.0f);
@@ -215,15 +216,15 @@ namespace GLGeometry
 				float theta1 = two_pi * j / slices;
 				float theta2 = two_pi * (j + 1) / slices;
 
-				float x11 = radius1 * std::cosf(theta1);
-				float x12 = radius1 * std::cosf(theta2);
-				float x21 = radius2 * std::cosf(theta1);
-				float x22 = radius2 * std::cosf(theta2);
+				float x11 = radius1 * std::cos(theta1);
+				float x12 = radius1 * std::cos(theta2);
+				float x21 = radius2 * std::cos(theta1);
+				float x22 = radius2 * std::cos(theta2);
 
-				float y11 = radius1 * std::sinf(theta1);
-				float y12 = radius1 * std::sinf(theta2);
-				float y21 = radius2 * std::sinf(theta1);
-				float y22 = radius2 * std::sinf(theta2);
+				float y11 = radius1 * std::sin(theta1);
+				float y12 = radius1 * std::sin(theta2);
+				float y21 = radius2 * std::sin(theta1);
+				float y22 = radius2 * std::sin(theta2);
 
 				//Position data for sphere
 				PushVertex3(position,x11, y11, z1);

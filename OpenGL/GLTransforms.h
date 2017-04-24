@@ -17,10 +17,10 @@ protected:
 
 public:
 	GLCamera();
-	void SetupView(glm::vec3 &eye, glm::vec3 &lookat, glm::vec3 &up);
+	void SetupView(const glm::vec3 &eye, const glm::vec3 &lookat, const glm::vec3 &up);
 	void SetupProjection(float fov, float aspect_ratio, float near_z, float far_z);
-	void PlaceAt(glm::vec3 &eye);
-	void LookAt(glm::vec3 &lookat);
+	void PlaceAt(const glm::vec3 &eye);
+	void LookAt(const glm::vec3 &lookat);
 	glm::mat4 GetTransform();
 };
 
@@ -34,11 +34,11 @@ protected:
 
 public:
 	GLTransform();
-	void Translate(glm::vec3 delta);
-	void Rotate(glm::vec3 axis, float angle);
-	void Scale(glm::vec3 factor);
+	void Translate(const glm::vec3 &delta);
+	void Rotate(const glm::vec3 &axis, float angle);
+	void Scale(const glm::vec3 &factor);
 	glm::mat4 GetTransform();
-	void Billboard(glm::vec3 facing, glm::vec3 up);
+	void Billboard(const glm::vec3 &facing, const glm::vec3 &up);
 
 };
 

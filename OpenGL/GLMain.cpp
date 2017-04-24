@@ -57,10 +57,11 @@ void GLMain::InitializeGLUT()
 
 	initialized_glut = true;
 	int argc = 1;
-	char *dummyArgs = "appname";
+	char dummyArgs[10] = "appname";
+	char *pDummyArgs = dummyArgs;	
 
 	// init GLUT and create Window
-	glutInit(&argc, &dummyArgs);
+	glutInit(&argc, &pDummyArgs);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA | GLUT_MULTISAMPLE);
 	glutInitWindowPosition(100, 100);
 	glutInitWindowSize(320, 320);

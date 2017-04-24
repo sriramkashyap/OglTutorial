@@ -1,6 +1,7 @@
 #include "GLTexture.h"
 #include "GLUtils.h"
 #include "FreeImage.h"
+#include <cstring>
 
 GLTexture::GLTexture()
 {

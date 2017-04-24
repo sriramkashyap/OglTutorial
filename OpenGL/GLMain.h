@@ -25,6 +25,15 @@ protected:
 
 public:
 	static void Run(GLApplication &p);
+	
+	template <class T>
+	static void Run()
+	{
+		T * temp = new T();
+		Run(*temp);
+		delete temp;
+	}
+
 	static void InitializeGLUT();
 	static bool Initialized();
 

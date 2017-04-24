@@ -36,7 +36,7 @@ GLCamera::GLCamera() :
 	ComputeProjMatrix();
 }
 
-void GLCamera::SetupView(glm::vec3 &eye, glm::vec3 &lookat, glm::vec3 &up)
+void GLCamera::SetupView(const glm::vec3 &eye, const glm::vec3 &lookat, const glm::vec3 &up)
 {
 	this->eye = eye;
 	this->lookat = lookat;
@@ -53,13 +53,13 @@ void GLCamera::SetupProjection(float fov, float aspect_ratio, float near_z, floa
 	ComputeProjMatrix();
 }
 
-void GLCamera::PlaceAt(glm::vec3 &eye)
+void GLCamera::PlaceAt(const glm::vec3 &eye)
 {
 	this->eye = eye;
 	ComputeViewMatrix();
 }
 
-void GLCamera::LookAt(glm::vec3 &lookat)
+void GLCamera::LookAt(const glm::vec3 &lookat)
 {
 	this->lookat = lookat;
 	ComputeViewMatrix();
@@ -84,19 +84,19 @@ GLTransform::GLTransform()
 	dirty = true;
 }
 
-void GLTransform::Translate(glm::vec3 delta)
+void GLTransform::Translate(const glm::vec3 &delta)
 {
 	translate = glm::translate(delta);
 	dirty = true;
 }
 
-void GLTransform::Rotate(glm::vec3 axis, float angle)
+void GLTransform::Rotate(const glm::vec3 &axis, float angle)
 {
 	rotate = glm::rotate(angle, axis);
 	dirty = true;
 }
 
-void GLTransform::Scale(glm::vec3 factor)
+void GLTransform::Scale(const glm::vec3 &factor)
 {
 	scale = glm::scale(factor);
 	dirty = true;
@@ -108,7 +108,7 @@ glm::mat4 GLTransform::GetTransform()
 	return transform;
 }
 
-void GLTransform::Billboard(glm::vec3 facing, glm::vec3 up)
+void GLTransform::Billboard(const glm::vec3 &facing, const glm::vec3 &up)
 {
 	//Replaces rotation matrix
 	glm::vec3 face_vector = glm::normalize(facing);

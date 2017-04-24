@@ -44,9 +44,9 @@ Build and Run:
 	Press escape to launch the next sample, and the next...
 	Controls can be accessed through number keys
 
-Using a different compiler (g++/Visual Studio 2011...):
+Using a different compiler (Visual Studio 2011...):
 -------------------------------------------------------
-> Create a new project / makefile and include all the cpp/header files
+> Create a new project and include all the cpp/header files
 
 > Add this to the compiler include path (modify paths as necessary):
 	C:\opengl\glew\include;C:\opengl\freeglut\include;C:\opengl\glm;C:\opengl\FreeImage\Dist
@@ -56,3 +56,11 @@ Using a different compiler (g++/Visual Studio 2011...):
 	
 > Add this to the library list:
 	freeglut.lib;glew32.lib;FreeImage.lib
+
+Building on Linux:
+------------------
+> Install these packages: freeglut3-dev libfreeimage-dev libglew-dev
+
+> Download glm as described above and unzip to some convenient location. Update the CFLAGS parameter in the Makefile to reflect that path
+
+> Run 'make'
